@@ -45,6 +45,27 @@ public class Book {
         return publisher;
     }
 
+    public String setTitle(String title) {
+        this.title = title;
+        return this.title;
+    }
+
+    public int setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+        return this.numberOfPages;
+    }
+
+    public String setAuthor(String author) {
+        this.author = author;
+        return this.author;
+    }
+
+    public String setPublisher(String publisher) {
+        this.publisher = publisher;
+        return this.publisher;
+    }
+
+
 
     // METODI
 }
