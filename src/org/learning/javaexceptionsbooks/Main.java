@@ -1,5 +1,7 @@
 package org.learning.javaexceptionsbooks;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -47,8 +49,8 @@ public class Main {
         try (FileWriter writer = new FileWriter("books.txt")) {
             for (Book book : books) {
                 if (book != null) {
-                    writer.write("Titolo: " + book.getTitle() + "- Numero di pagine: " + book.getNumberOfPages()
-                            + "- Autore: " + book.getAuthor() + "- Editore: " + book.getPublisher() + "\n");
+                    writer.write("Titolo: " + book.getTitle() + " - Numero di pagine: " + book.getNumberOfPages()
+                            + " - Autore: " + book.getAuthor() + " - Editore: " + book.getPublisher() + "\n");
                 }
             }
             System.out.println("Dati dei libri scritti nel file.");
@@ -56,6 +58,18 @@ public class Main {
             // IOException è una classe di eccezioni che viene utilizzata per gestire le eccezioni correlate all'I/O
             // (Input/Output)
             System.out.println("Si è verificato un errore durante la scrittura nel file: " + e.getMessage());
+        }
+
+        try (Scanner fileReader = new Scanner(new File("books.txt"))) {
+            System.out.println("\nDati dei libri letti dal file:");
+
+            while (fileReader.hasNextLine()) {
+                // hasNextLine controlla se ci sono ancora righe da leggere nel file
+                String line = fileReader.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
         }
     }
 }
